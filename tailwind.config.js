@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#070606",
+        background: "black",
         green: "#608671"
       }
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 

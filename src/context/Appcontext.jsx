@@ -4,7 +4,10 @@ const Appcontext = createContext({})
 
 export const AppProvider = ({children}) => {
     const [FullScreen, setFullScreen] = useState(false)
-
+    const [nav, setNav] = useState(false)
+    const navAction = () => {
+        setNav(prev => !prev)
+    }
     useEffect(()=> {
         const handleResize = ()=> {
             const size = window.innerWidth;
@@ -18,7 +21,7 @@ export const AppProvider = ({children}) => {
     }, [FullScreen])
 
     return (
-        <Appcontext.Provider value={{FullScreen}}>
+        <Appcontext.Provider value={{FullScreen, nav, navAction}}>
             {children}
         </Appcontext.Provider>
     )

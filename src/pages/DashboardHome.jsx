@@ -1,20 +1,36 @@
 import { Outlet } from "react-router-dom"
 import { FaChevronRight, FaBars, FaBoxOpen, FaXmark } from "react-icons/fa6";
 import { IoSearchSharp } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import LOGO from "../assets/LOGO-tran.png";
 import { IoIosSpeedometer } from "react-icons/io";
 import { GiShoppingBag } from "react-icons/gi"
 import { SlNotebook } from "react-icons/sl";
-import { useState } from "react";
+import { useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Appcontext from "../context/Appcontext";
+
+const imgVariant = {
+    initial: {
+        width: "215px"
+    },
+    animate: {
+        width: 0,
+        transition: {
+            type: "linear", duration: 0.5
+        }
+    }
+}
 
 const navVariant = {
-    initial : {
+    initial: {
         width: "192px"
     },
-    animate : {
-        width: "50px",
+    small: {
+        width: "30px"
+    },
+    animate: {
+        width: "30px",
         transition: {
             type: "spring", stiffness: 100, duration: 0.5
         }
@@ -22,10 +38,13 @@ const navVariant = {
 }
 
 const dashboardVariant = {
-    initial : {
-        paddingLeft: "192px"
+    initial: {
+        paddingLeft: "210px"
     },
-    animate : {
+    small: {
+        paddingLeft: "45px"
+    },
+    animate: {
         paddingLeft: "50px",
         transition: {
             type: "spring", stiffness: 100, duration: 0.5
@@ -34,22 +53,20 @@ const dashboardVariant = {
 }
 
 const DashboardHome = () => {
-    const [nav, setNav] = useState(false)
-    const navAction = ()=> {
-        setNav(prev=> !prev)
-    }
+    const location = useLocation()
+    const { FullScreen, nav, navAction } = useContext(Appcontext)
     return (
         <section className="grid items-center gap-5 text-white bg-green">
             <div className="">
                 <div className="fixed top-0 left-0 right-0 text-white flex">
                     <div className="hidden md:block bg-[#608671]">
-                        <img src={LOGO} className="w-20 md:w-48 md:h-28 object-cover object-top" alt="" />
+                        <motion.img variants={imgVariant} animate={nav && FullScreen ? "animate" : FullScreen && "initial"} src={LOGO} className="w-20 md:h-28 object-cover object-top" alt="" />
                     </div>
                     <div className="bg-black flex-1 flex justify-between items-center p-3 shadow-lg">
-                        <div className="flex items-center gap-7">
-                            {nav ? <FaXmark  onClick={navAction} size={30} /> :<FaBars onClick={navAction} size={30} />}
-                            <IoSearchSharp size={30} />
-                            <input type="text" className="w-52  h-12 rounded-md" name="" id="" />
+                        <div className="flex items-center gap-3 md:gap-7">
+                            {nav ? <FaXmark className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} /> : <FaBars className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} />}
+                            <IoSearchSharp size={FullScreen ? 30 : 20} />
+                            <input type="text" className={`${nav && FullScreen ? "w-80" : "md:w-52"} text-black font-semibold duration-500 h-8 md:h-12 rounded-md pl-4`} name="" id="" placeholder="Search Dashboard"/>
                         </div>
                         <div className="flex items-center gap-3">
                             <p className="font-medium md:text-base text-sm">Hello, Vera</p>
@@ -59,64 +76,74 @@ const DashboardHome = () => {
                 </div>
                 <AnimatePresence>
                     <motion.div className="grid grid-cols-6 min-h-screen">
-                        <motion.nav variants={navVariant} animate={nav ? "animate" : "initial"} className={`md:w-48 fixed top-[72px] md:top-28 bottom-0 left-0 bg-background text-slate-200 p-3`}>
-                            <motion.ul className="flex flex-col gap-8 font-bold">
-                                <motion.li>
-                                    <NavLink to="/dashboard" className={({isActive})=> isActive ? "text-[#608671] flex items-center justify-between": "flex items-center justify-between"}>
-                                        <div className="flex items-center gap-3">
-                                            <IoIosSpeedometer size={20}/>
-                                            {!nav && <motion.p
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }} 
-                                             className="">Dashboard</motion.p>}
-                                        </div>
-                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
-                                    </NavLink>
-                                </motion.li>
-                                <motion.li>
-                                    <NavLink className={({isActive})=> isActive ? "flex items-center justify-between": "flex items-center justify-between"}>
-                                        <div className="flex items-center gap-3">
-                                            <GiShoppingBag size={20}/>
-                                            {!nav && <motion.p
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0}} 
-                                             className="">Orders</motion.p>}
-                                        </div>
-                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
-                                    </NavLink>
-                                </motion.li>
-                                <motion.li>
-                                    <NavLink className={({isActive})=> isActive ? "flex items-center justify-between": "flex items-center justify-between"}>
-                                        <div className="flex items-center gap-3">
-                                            <FaBoxOpen size={20}/>
-                                            {!nav && <motion.p
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0}} 
-                                             className="">Products</motion.p>}
-                                        </div>
-                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
-                                    </NavLink>
-                                </motion.li>
-                                <motion.li>
-                                    <NavLink className={({isActive})=> isActive ? "flex items-center justify-between": "flex items-center justify-between"}>
-                                        <div className="flex items-center gap-3">
-                                            <SlNotebook size={20}/>
-                                           {!nav && <motion.p
-                                           initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0}} 
-                                            className="">Pages</motion.p>}
-                                        </div>
-                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
-                                    </NavLink>
-                                </motion.li>
-                            </motion.ul>
-                        </motion.nav>
-                        <motion.div variants={dashboardVariant} animate={nav ? "animate" : "initial"} className={`pl-40 mt-20 md:mt-28 w-full col-span-6`}>
-                            <Outlet />
+                        <nav className={`fixed top-[56px] md:top-28 bottom-0 left-0 bg-black text-slate-200 p-3`}>
+                            {FullScreen ?
+                                <motion.ul variants={navVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`${FullScreen ? "w-44" : "w-[30px]"} bg-black flex flex-col gap-8 font-bold`}>
+                                    <motion.li>
+                                        <NavLink to="/dashboard" className={({ isActive }) => isActive && location.pathname === "/dashboard" ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                            <div className="flex items-center gap-3">
+                                                <IoIosSpeedometer size={20} />
+                                                {!nav && <motion.p
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className="">Dashboard</motion.p>}
+                                            </div>
+                                            {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
+                                        </NavLink>
+                                    </motion.li>
+                                    <motion.li>
+                                        <NavLink to="orders" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                            <div className="flex items-center gap-3">
+                                                <GiShoppingBag size={20} />
+                                                {!nav && <motion.p
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className="">Orders</motion.p>}
+                                            </div>
+                                            {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
+                                        </NavLink>
+                                    </motion.li>
+                                    <motion.li>
+                                        <NavLink to="/products" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                            <div className="flex items-center gap-3">
+                                                <FaBoxOpen size={20} />
+                                                {!nav && <motion.p
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className="">Products</motion.p>}
+                                            </div>
+                                            {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
+                                        </NavLink>
+                                    </motion.li>
+                                    <motion.li>
+                                        <NavLink to="/pages" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                            <div className="flex items-center gap-3">
+                                                <SlNotebook size={20} />
+                                                {!nav && <motion.p
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className="">Pages</motion.p>}
+                                            </div>
+                                            {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
+                                        </NavLink>
+                                    </motion.li>
+
+                                </motion.ul>
+                                :
+                                <motion.ul className="flex flex-col gap-8 font-bold">
+                                    <NavLink to="/dashboard" className={({ isActive }) => (isActive && location.pathname === "/dashboard") && "text-green"}><IoIosSpeedometer size={20} /></NavLink>
+                                    <NavLink to="orders" className={({ isActive }) => isActive && "text-green"}><GiShoppingBag size={20} /></NavLink>
+                                    <NavLink to="products" className={({ isActive }) => isActive && "text-green"}><FaBoxOpen size={20} /></NavLink>
+                                    <NavLink to="pages" className={({ isActive }) => isActive && "text-green"}><SlNotebook size={20} /></NavLink>
+                                </motion.ul>
+                            }
+                        </nav>
+                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`mt-16 md:mt-28 w-full col-span-6`}>
+                            <Outlet context={nav} />
                         </motion.div>
                     </motion.div>
                 </AnimatePresence>

@@ -1,5 +1,6 @@
 import AdminLogin from "./pages/AdminLogin";
 import DashboardHome from "./pages/DashboardHome";
+import OrderPage from "./pages/OrderPage";
 import WelcomeAdmin from "./components/WelcomeAdmin";
 import { AppProvider } from "./context/Appcontext";
 import {
@@ -19,6 +20,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <WelcomeAdmin />
+      },
+      {
+        path: "orders",
+        element: <OrderPage />
+      },
+      {
+        path: "products",
+        element: 
       }
     ]
   },
