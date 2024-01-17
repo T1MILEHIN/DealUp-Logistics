@@ -65,9 +65,9 @@ const DashboardHome = () => {
                     </div>
                     <div className="bg-black flex-1 flex justify-between items-center p-3 shadow-lg">
                         <div className="flex items-center gap-3 md:gap-7">
-                            {nav ? <FaXmark className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} /> : <FaBars className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} />}
+                            {FullScreen && (nav ? <FaXmark className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} /> : <FaBars className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} />)}
                             <IoSearchSharp size={FullScreen ? 30 : 20} />
-                            <input type="text" className={`${nav && FullScreen ? "w-80" : "w-32 md:w-52"} text-black font-semibold duration-500 h-8 md:h-12 rounded-md pl-4`} name="" id="" placeholder="Search Dashboard"/>
+                            <input type="text" className={`${nav && FullScreen ? "w-80" : "w-40 md:w-52"} text-black font-semibold duration-500 h-8 md:h-12 rounded-md pl-4`} name="" id="" placeholder="Search Dashboard"/>
                         </div>
                         <div className="flex items-center gap-3">
                             <p className="font-medium md:text-base text-sm">Hello, Vera</p>
