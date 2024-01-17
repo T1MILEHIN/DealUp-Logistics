@@ -16,7 +16,7 @@ const navVariant = {
     animate : {
         width: "50px",
         transition: {
-            type: "spring", stiffness: 250, duration: 0.5, delayChildren: 0.3, staggerChildren: 0.4
+            type: "spring", stiffness: 100, duration: 0.5
         }
     }
 }
@@ -26,9 +26,9 @@ const dashboardVariant = {
         paddingLeft: "192px"
     },
     animate : {
-        paddingLeft: "40px",
+        paddingLeft: "50px",
         transition: {
-            type: "spring", stiffness: 250
+            type: "spring", stiffness: 100, duration: 0.5
         }
     }
 }
@@ -60,7 +60,7 @@ const DashboardHome = () => {
                 <AnimatePresence>
                     <motion.div className="grid grid-cols-6 min-h-screen">
                         <motion.nav variants={navVariant} animate={nav ? "animate" : "initial"} className={`md:w-48 fixed top-[72px] md:top-28 bottom-0 left-0 bg-background text-slate-200 p-3`}>
-                            <motion.ul variants={navVariant} className="flex flex-col gap-8 font-bold">
+                            <motion.ul className="flex flex-col gap-8 font-bold">
                                 <motion.li>
                                     <NavLink to="/dashboard" className={({isActive})=> isActive ? "text-[#608671] flex items-center justify-between": "flex items-center justify-between"}>
                                         <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ const DashboardHome = () => {
                                             exit={{ opacity: 0 }} 
                                              className="">Dashboard</motion.p>}
                                         </div>
-                                        {!nav && <FaChevronRight />}
+                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                     </NavLink>
                                 </motion.li>
                                 <motion.li>
@@ -84,7 +84,7 @@ const DashboardHome = () => {
                                             exit={{ opacity: 0}} 
                                              className="">Orders</motion.p>}
                                         </div>
-                                        {!nav && <FaChevronRight />}
+                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                     </NavLink>
                                 </motion.li>
                                 <motion.li>
@@ -97,7 +97,7 @@ const DashboardHome = () => {
                                             exit={{ opacity: 0}} 
                                              className="">Products</motion.p>}
                                         </div>
-                                        {!nav && <FaChevronRight />}
+                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                     </NavLink>
                                 </motion.li>
                                 <motion.li>
@@ -110,7 +110,7 @@ const DashboardHome = () => {
                                             exit={{ opacity: 0}} 
                                             className="">Pages</motion.p>}
                                         </div>
-                                        {!nav && <FaChevronRight />}
+                                        {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                     </NavLink>
                                 </motion.li>
                             </motion.ul>
