@@ -29,7 +29,7 @@ import { useNavigate } from "react-router-dom";
                         <input type="text" className="border-2 border-black rounded-md h-10 w-full pl-3" />
                     </label>
                 </div>
-                <button onClick={LOGIN} className="md:py-3 bg-background w-full rounded-md font-semibold">LOGIN</button>
+                <button onClick={LOGIN} className="md:py-3 bg-background text-white w-full rounded-md font-semibold">LOGIN</button>
             </form>
         </div>
       </section>
