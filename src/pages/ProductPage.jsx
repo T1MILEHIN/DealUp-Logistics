@@ -30,7 +30,7 @@ const ProductPage = () => {
             <tr>
               <td className="flex items-center gap-2">
                 <div className="mask mask-squircle w-12 h-12">
-                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Product 1" />
                 </div>
                 <p>Fitbit Sense Advanced Smartwatchh</p>
               </td>
@@ -47,7 +47,7 @@ const ProductPage = () => {
             <tr>
               <td className="flex items-center gap-2">
                 <div className="mask mask-squircle w-12 h-12">
-                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Product 2" />
                 </div>
                 <p>Fitbit Sense Advanced Smartwatchh</p>
               </td>
@@ -64,7 +64,7 @@ const ProductPage = () => {
             <tr>
               <td className="flex items-center gap-2">
                 <div className="mask mask-squircle w-12 h-12">
-                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Product 3" />
                 </div>
                 <p>Fitbit Sense Advanced Smartwatchh</p>
               </td>
@@ -80,7 +80,7 @@ const ProductPage = () => {
             <tr>
               <td className="flex items-center gap-2">
                 <div className="mask mask-squircle w-12 h-12">
-                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Product 4" />
                 </div>
                 <p>Fitbit Sense Advanced Smartwatchh</p>
               </td>
