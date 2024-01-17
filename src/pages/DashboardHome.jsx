@@ -39,7 +39,7 @@ const DashboardHome = () => {
         setNav(prev=> !prev)
     }
     return (
-        <section className="grid items-center gap-5 text-white bg-[#608671]">
+        <section className="grid items-center gap-5 text-white bg-green">
             <div className="">
                 <div className="fixed top-0 left-0 right-0 text-white flex">
                     <div className="hidden md:block bg-[#608671]">
