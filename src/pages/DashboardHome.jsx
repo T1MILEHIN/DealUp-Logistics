@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Appcontext from "../context/Appcontext";
 
+
 const imgVariant = {
     initial: {
         width: "215px"
@@ -42,7 +43,7 @@ const dashboardVariant = {
         paddingLeft: "210px"
     },
     small: {
-        paddingLeft: "45px"
+        paddingLeft: "50px"
     },
     animate: {
         paddingLeft: "50px",
@@ -78,7 +79,7 @@ const DashboardHome = () => {
                     <motion.div className="grid grid-cols-6 min-h-screen">
                         <nav className={`fixed top-[56px] md:top-28 bottom-0 left-0 bg-black text-slate-200 p-3`}>
                             {FullScreen ?
-                                <motion.ul variants={navVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`${FullScreen ? "w-44" : "w-[30px]"} bg-black flex flex-col gap-8 font-bold`}>
+                                <motion.ul variants={navVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`${FullScreen ? "w-44" : "w-[30px]"} w-[30px] bg-black flex flex-col gap-8 font-bold`}>
                                     <motion.li>
                                         <NavLink to="/dashboard" className={({ isActive }) => isActive && location.pathname === "/dashboard" ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
                                             <div className="flex items-center gap-3">
@@ -92,8 +93,8 @@ const DashboardHome = () => {
                                             {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                         </NavLink>
                                     </motion.li>
-                                    <motion.li>
-                                        <NavLink to="orders" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                    <motion.li className="group duration-300 overflow-hidden">
+                                        <p className={`flex items-center justify-between`}>
                                             <div className="flex items-center gap-3">
                                                 <GiShoppingBag size={20} />
                                                 {!nav && <motion.p
@@ -102,11 +103,15 @@ const DashboardHome = () => {
                                                     exit={{ opacity: 0 }}
                                                     className="">Orders</motion.p>}
                                             </div>
-                                            {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
-                                        </NavLink>
+                                            {!nav && <motion.div className="group-hover:rotate-90 duration-300" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
+                                        </p>
+                                        <ul className="ml-8 flex flex-col h-0 group-hover:h-12 duration-300">
+                                            <NavLink to="orders" className={({ isActive }) => isActive && "text-green"}>Orders</NavLink>
+                                            <NavLink>Order Detail</NavLink>
+                                        </ul>
                                     </motion.li>
                                     <motion.li>
-                                        <NavLink to="/products" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
+                                        <NavLink to="products" className={({ isActive }) => isActive ? "text-green flex items-center justify-between" : "flex items-center justify-between"}>
                                             <div className="flex items-center gap-3">
                                                 <FaBoxOpen size={20} />
                                                 {!nav && <motion.p
@@ -142,7 +147,7 @@ const DashboardHome = () => {
                                 </motion.ul>
                             }
                         </nav>
-                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`mt-16 md:mt-28 w-full col-span-6`}>
+                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`pl-[210px] mt-14 md:mt-28 w-full col-span-6`}>
                             <Outlet context={nav} />
                         </motion.div>
                     </motion.div>

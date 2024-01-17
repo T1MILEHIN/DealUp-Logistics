@@ -20,24 +20,24 @@ const WelcomeAdmin = () => {
                 <div className='flex items-end justify-between bg-background flex-1 p-2 md:p-6 rounded-md'>
                     <div>
                         <p className='md:text-xl text-sm'>Total Revenue</p>
-                        <h1 className='font-medium md:font-bold md:text-2xl text-base'>N3,000.00</h1>
-                        <p className='md:text-base text-xs text-slate-400'>jan- March 2019</p>
+                        <h1 className='font-medium md:font-bold md:text-2xl text-sm'>N3,000.00</h1>
+                        <p className='md:text-base text-xs text-slate-300'>jan- March 2019</p>
                     </div>
                     <FaRegMoneyBill1 size={FullScreen ? 70 : 20} />
                 </div>
                 <div className='flex items-end justify-between bg-background flex-1 p-2 md:p-6 rounded-md'>
                     <div>
                         <p className='md:text-xl text-sm'>Total Orders</p>
-                        <h1 className='font-medium md:font-bold md:text-2xl text-base'>2,567</h1>
-                        <p className='md:text-base text-xs text-slate-400'>jan- March 2019</p>
+                        <h1 className='font-medium md:font-bold md:text-2xl text-sm'>2,567</h1>
+                        <p className='md:text-base text-xs text-slate-300'>jan- March 2019</p>
                     </div>
                     <FaCartShopping size={FullScreen ? 70 : 20} />
                 </div>
                 <div className='flex items-end justify-between bg-background flex-1 p-2 md:p-6 rounded-md'>
                     <div>
                         <p className='md:text-xl text-sm'>Total Visitors</p>
-                        <h1 className='font-medium md:font-bold md:text-2xl text-base'>1,459</h1>
-                        <p className='md:text-base text-xs text-slate-400'>+22% from yesterday</p>
+                        <h1 className='font-medium md:font-bold md:text-2xl text-sm'>1,459</h1>
+                        <p className='md:text-base text-xs text-slate-300'>+22% from yesterday</p>
                     </div>
                     <FaUsers size={FullScreen ? 70 : 20} />
                 </div>

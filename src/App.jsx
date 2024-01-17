@@ -1,6 +1,7 @@
 import AdminLogin from "./pages/AdminLogin";
 import DashboardHome from "./pages/DashboardHome";
 import OrderPage from "./pages/OrderPage";
+import ProductPage from "./pages/ProductPage";
 import WelcomeAdmin from "./components/WelcomeAdmin";
 import { AppProvider } from "./context/Appcontext";
 import {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: 
+        element: <ProductPage />
       }
     ]
   },
