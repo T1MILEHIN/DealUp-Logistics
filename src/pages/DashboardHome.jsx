@@ -28,7 +28,7 @@ const navVariant = {
         width: "192px"
     },
     small: {
-        width: "30px"
+        width: "30px",
     },
     animate: {
         width: "30px",
@@ -43,7 +43,7 @@ const dashboardVariant = {
         paddingLeft: "210px"
     },
     small: {
-        paddingLeft: "50px"
+        paddingLeft: "45px"
     },
     animate: {
         paddingLeft: "50px",
@@ -67,7 +67,7 @@ const DashboardHome = () => {
                         <div className="flex items-center gap-3 md:gap-7">
                             {nav ? <FaXmark className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} /> : <FaBars className="cursor-pointer" onClick={navAction} size={FullScreen ? 30 : 20} />}
                             <IoSearchSharp size={FullScreen ? 30 : 20} />
-                            <input type="text" className={`${nav && FullScreen ? "w-80" : "md:w-52"} text-black font-semibold duration-500 h-8 md:h-12 rounded-md pl-4`} name="" id="" placeholder="Search Dashboard"/>
+                            <input type="text" className={`${nav && FullScreen ? "w-80" : "w-32 md:w-52"} text-black font-semibold duration-500 h-8 md:h-12 rounded-md pl-4`} name="" id="" placeholder="Search Dashboard"/>
                         </div>
                         <div className="flex items-center gap-3">
                             <p className="font-medium md:text-base text-sm">Hello, Vera</p>
@@ -93,8 +93,8 @@ const DashboardHome = () => {
                                             {!nav && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                         </NavLink>
                                     </motion.li>
-                                    <motion.li className="group duration-300 overflow-hidden">
-                                        <p className={`flex items-center justify-between`}>
+                                    <motion.li className={`relative group duration-300 ${!nav && "overflow-hidden"}`}>
+                                        <p className={`cursor-pointer flex items-center justify-between`}>
                                             <div className="flex items-center gap-3">
                                                 <GiShoppingBag size={20} />
                                                 {!nav && <motion.p
@@ -105,7 +105,7 @@ const DashboardHome = () => {
                                             </div>
                                             {!nav && <motion.div className="group-hover:rotate-90 duration-300" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><FaChevronRight /></motion.div>}
                                         </p>
-                                        <ul className="ml-8 flex flex-col h-0 group-hover:h-12 duration-300">
+                                        <ul className={`ml-8 flex flex-col h-0 ${nav ? "absolute p-2 right-56 h-16 bg-black w-32 z-10" : "group-hover:h-12"} duration-300`}>
                                             <NavLink to="orders" className={({ isActive }) => isActive && "text-green"}>Orders</NavLink>
                                             <NavLink>Order Detail</NavLink>
                                         </ul>
@@ -147,7 +147,7 @@ const DashboardHome = () => {
                                 </motion.ul>
                             }
                         </nav>
-                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`pl-[210px] mt-14 md:mt-28 w-full col-span-6`}>
+                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`pl-[200px] mt-14 md:mt-28 w-full col-span-6`}>
                             <Outlet context={nav} />
                         </motion.div>
                     </motion.div>
