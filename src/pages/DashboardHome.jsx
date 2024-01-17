@@ -43,7 +43,7 @@ const dashboardVariant = {
         paddingLeft: "210px"
     },
     small: {
-        paddingLeft: "45px"
+        paddingLeft: "50px"
     },
     animate: {
         paddingLeft: "50px",
@@ -147,7 +147,7 @@ const DashboardHome = () => {
                                 </motion.ul>
                             }
                         </nav>
-                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`pl-[200px] mt-14 md:mt-28 w-full col-span-6`}>
+                        <motion.div variants={dashboardVariant} animate={nav && FullScreen ? "animate" : FullScreen ? "initial" : "small"} className={`mt-14 md:mt-28 w-full col-span-6`}>
                             <Outlet context={nav} />
                         </motion.div>
                     </motion.div>
