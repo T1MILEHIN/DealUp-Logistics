@@ -8,7 +8,7 @@ import { IoIosSpeedometer } from "react-icons/io";
 import { GiShoppingBag } from "react-icons/gi"
 import { SlNotebook } from "react-icons/sl";
 import { useContext } from "react";
-import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Appcontext from "../context/Appcontext";
 
 
@@ -65,7 +65,7 @@ const DashboardHome = () => {
     return (
         <section className="grid items-center gap-5 text-white bg-green">
             <div className="">
-                <div className="fixed top-0 left-0 right-0 text-white flex">
+                <div className="fixed top-0 left-0 right-0 w-full text-white flex">
                     <div className="hidden md:block bg-[#608671]">
                         <motion.img variants={imgVariant} animate={nav && FullScreen ? "animate" : FullScreen && "initial"} src={LOGO} className="w-20 md:h-28 object-cover object-top" alt="" />
                     </div>
